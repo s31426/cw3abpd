@@ -1,6 +1,6 @@
 ﻿namespace cw3abpd;
 
-public class kontener
+public abstract class kontener
 {
     public double paylodeWeight;
     public double height;
@@ -10,9 +10,8 @@ public class kontener
     public double maxCapacity;
     public static int primaryKey = 0;
     
-    public kontener(double paylodeWeight, double height, double containerWeight, double depth, double maxCapacity,char firstletter)
+    public kontener(double height, double containerWeight, double depth, double maxCapacity,char firstletter)
     {
-        this.paylodeWeight = paylodeWeight;
         this.height = height;
         this.containerWeight = containerWeight;
         this.depth = depth;
@@ -22,12 +21,12 @@ public class kontener
     }
 
 
-    public void unload()
+    public virtual void unload()
     {
         paylodeWeight = 0;
     }
 
-    public void load(double mass)
+    public virtual void load(double mass)
     {
         if (mass > maxCapacity)
         {
@@ -35,7 +34,7 @@ public class kontener
         }
         else
         {
-            paylodeWeight = paylodeWeight + mass;
+            paylodeWeight += mass;
         }
     }
 }
